@@ -4,64 +4,69 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
-    public int m_PlayerNumber = 1;
-    public float m_Speed = 12f;
-    public float m_TurnSpeed = 180f;
-
-    private string m_MovementAxisName;
-    private string m_TurnAxisName;
+    public float movementSpeed = 6f;
+    private float horizontalMove = 0f;
+    private float verticalMove = 0f;
+    // 
     private Rigidbody m_Rigidbody;
-    private float m_MovementInputValue;
-    private float m_TurnInputValue;
+    private Vector3 m_Velocity = Vector3.zero;
+    [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;    
+    // 
+    public Transform tankHead;
 
-    private void Awake ()
+    private void Awake()
     {
-        m_Rigidbody = GetComponent<Rigidbody> ();
+        m_Rigidbody = GetComponent<Rigidbody>();
     }
 
-    private void OnEnable ()
+    // ----------------------------------------------- //
+
+    private void OnEnable()
     {
         m_Rigidbody.isKinematic = false;
-
-        m_MovementInputValue = 0f;
-        m_TurnInputValue = 0f;
     }
 
-    private void OnDisable ()
+    private void OnDisable()
     {
         m_Rigidbody.isKinematic = true;
     }
 
-    private void Start ()
+    // ----------------------------------------------- //
+
+    private void Update()
     {
-        m_MovementAxisName = "Vertical";
-        m_TurnAxisName = "Horizontal";
+        horizontalMove = Input.GetAxisRaw("Horizontal") * movementSpeed;
+        verticalMove = Input.GetAxisRaw("Vertical") * movementSpeed;
     }
 
-    private void Update ()
+    private void FixedUpdate()
     {
-        m_MovementInputValue = Input.GetAxis (m_MovementAxisName);
-        m_TurnInputValue = Input.GetAxis (m_TurnAxisName);
+        Move();
+        Turn();
     }
 
-    private void FixedUpdate ()
+    private void Move()
     {
-        Move ();
-        Turn ();
+        Vector3 targetVelocity = new Vector3(-verticalMove, 0f, horizontalMove);
+        m_Rigidbody.velocity = Vector3.SmoothDamp(m_Rigidbody.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+
+        if (horizontalMove != 0 || verticalMove != 0) {
+            float angle = (Mathf.Atan2(verticalMove, -horizontalMove) * Mathf.Rad2Deg) - 90f;
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        }
     }
 
-    private void Move ()
-    {
-        Vector3 movement = -transform.right * m_MovementInputValue * m_Speed * Time.deltaTime;
-        m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
-    }
 
-
-    private void Turn ()
+    private void Turn()
     {
-        float turn = m_TurnInputValue * m_TurnSpeed * Time.deltaTime;
-        Quaternion turnRotation = Quaternion.Euler (0f, turn, 0f);
-        m_Rigidbody.MoveRotation (m_Rigidbody.rotation * turnRotation);
+        Vector3 lookPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        lookPos = new Vector3(lookPos.x - 10f, lookPos.y, lookPos.z);
+        lookPos = lookPos - transform.position;
+        
+        float angle = Mathf.Atan2(lookPos.z, -lookPos.x) * Mathf.Rad2Deg;
+        tankHead.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+        
+        // m_Rigidbody.angularVelocity = Vector3.zero;
     }
 
 }
