@@ -5,8 +5,10 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     public float movementSpeed = 6f;
+    // 
     private float horizontalMove = 0f;
     private float verticalMove = 0f;
+    private float turnSpeed = 0.1f;
     // 
     private Rigidbody m_Rigidbody;
     private Vector3 m_Velocity = Vector3.zero;
@@ -18,18 +20,6 @@ public class playerController : MonoBehaviour
     {
         m_Rigidbody = GetComponent<Rigidbody>();
     }
-
-    // ----------------------------------------------- //
-
-    // private void OnEnable()
-    // {
-    //     m_Rigidbody.isKinematic = false;
-    // }
-
-    // private void OnDisable()
-    // {
-    //     m_Rigidbody.isKinematic = true;
-    // }
 
     // ----------------------------------------------- //
 
@@ -45,6 +35,8 @@ public class playerController : MonoBehaviour
         Turn();
     }
 
+    // ----------------------------------------------- //
+
     private void Move()
     {
         Vector3 targetVelocity = new Vector3(horizontalMove, 0f, verticalMove);
@@ -52,21 +44,24 @@ public class playerController : MonoBehaviour
 
         if (horizontalMove != 0 || verticalMove != 0) {
             float angle = (Mathf.Atan2(verticalMove, -horizontalMove) * Mathf.Rad2Deg);
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, angle, 0f), 0.1f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, angle, 0f), turnSpeed);
         }
     }
 
 
     private void Turn()
     {
-        Vector3 lookPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        lookPos = new Vector3(lookPos.x - 7.5f, lookPos.y, lookPos.z);
-        lookPos = lookPos - transform.position;
-        
-        float angle = Mathf.Atan2(lookPos.z, -lookPos.x) * Mathf.Rad2Deg;
-        tankHead.rotation = Quaternion.AngleAxis(angle, Vector3.up);
-        
-        // m_Rigidbody.angularVelocity = Vector3.zero;
-    }
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
+        RaycastHit hit;
+        if (Physics.Raycast (ray, out hit)) {
+            Vector3 dir = hit.point - tankHead.position;
+            dir.y = 0;
+
+            float angle = Mathf.Atan2(dir.z, -dir.x) * Mathf.Rad2Deg;
+            tankHead.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+        }
+
+        m_Rigidbody.angularVelocity = Vector3.zero;
+    }
 }
