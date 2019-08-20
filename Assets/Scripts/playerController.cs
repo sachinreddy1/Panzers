@@ -21,15 +21,15 @@ public class playerController : MonoBehaviour
 
     // ----------------------------------------------- //
 
-    private void OnEnable()
-    {
-        m_Rigidbody.isKinematic = false;
-    }
+    // private void OnEnable()
+    // {
+    //     m_Rigidbody.isKinematic = false;
+    // }
 
-    private void OnDisable()
-    {
-        m_Rigidbody.isKinematic = true;
-    }
+    // private void OnDisable()
+    // {
+    //     m_Rigidbody.isKinematic = true;
+    // }
 
     // ----------------------------------------------- //
 
@@ -47,12 +47,12 @@ public class playerController : MonoBehaviour
 
     private void Move()
     {
-        Vector3 targetVelocity = new Vector3(-verticalMove, 0f, horizontalMove);
+        Vector3 targetVelocity = new Vector3(horizontalMove, 0f, verticalMove);
         m_Rigidbody.velocity = Vector3.SmoothDamp(m_Rigidbody.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
         if (horizontalMove != 0 || verticalMove != 0) {
-            float angle = (Mathf.Atan2(verticalMove, -horizontalMove) * Mathf.Rad2Deg) - 90f;
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            float angle = (Mathf.Atan2(verticalMove, -horizontalMove) * Mathf.Rad2Deg);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, angle, 0f), 0.1f);
         }
     }
 
@@ -60,7 +60,7 @@ public class playerController : MonoBehaviour
     private void Turn()
     {
         Vector3 lookPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        lookPos = new Vector3(lookPos.x - 10f, lookPos.y, lookPos.z);
+        lookPos = new Vector3(lookPos.x - 7.5f, lookPos.y, lookPos.z);
         lookPos = lookPos - transform.position;
         
         float angle = Mathf.Atan2(lookPos.z, -lookPos.x) * Mathf.Rad2Deg;
