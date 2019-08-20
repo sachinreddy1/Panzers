@@ -15,6 +15,9 @@ public class playerController : MonoBehaviour
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;    
     // 
     public Transform tankHead;
+    // 
+    public GameObject bulletPrefab;
+    public Transform firePoint;
 
     private void Awake()
     {
@@ -27,6 +30,10 @@ public class playerController : MonoBehaviour
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * movementSpeed;
         verticalMove = Input.GetAxisRaw("Vertical") * movementSpeed;
+        // 
+        if (Input.GetMouseButtonDown(0)) {
+            Shoot();
+        }
     }
 
     private void FixedUpdate()
@@ -63,5 +70,11 @@ public class playerController : MonoBehaviour
         }
 
         m_Rigidbody.angularVelocity = Vector3.zero;
+    }
+
+    // ----------------------------------------------- //
+
+    void Shoot () {
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
 }
