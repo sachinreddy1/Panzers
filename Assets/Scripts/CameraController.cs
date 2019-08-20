@@ -11,16 +11,18 @@ public class CameraController : MonoBehaviour
     // 
     private float m_ZoomSpeed;
     private Vector3 m_MoveVelocity;
-    // 
     private Vector3 m_DesiredPosition;
-    public float x_offset = 10f;
-    public float y_offset = 10f;
+    private float cameraOffset;
     // 
-    public Transform[] m_Targets;
+    public Transform m_Target;
 
     private void Awake()
     {
         m_Camera = transform.GetComponent<Camera>();
+    }
+
+    void Start() {
+        cameraOffset = transform.position.z;
     }
 
     // ----------------------------------------------- //
@@ -39,7 +41,7 @@ public class CameraController : MonoBehaviour
 
     private void Zoom()
     {
-        float requiredSize = FindRequiredSize();
+        float requiredSize = 5f;
         m_Camera.orthographicSize = Mathf.SmoothDamp(m_Camera.orthographicSize, requiredSize, ref m_ZoomSpeed, m_DampTime);
     }
 
@@ -47,43 +49,10 @@ public class CameraController : MonoBehaviour
 
     private Vector3 FindAveragePosition()
     {
-        Vector3 averagePos = new Vector3();
-        int numTargets = 0;
-        for (int i = 0; i < m_Targets.Length; i++)
-        {
-            if (!m_Targets[i].gameObject.activeSelf)
-                continue;
-            averagePos += m_Targets[i].position;
-            numTargets++;
-        }
-
-        if (numTargets > 0)
-            averagePos /= numTargets;
-
-        averagePos.y = y_offset;
-        averagePos.x += x_offset;
-
-        return averagePos;
-    }
-
-    private float FindRequiredSize()
-    {
-        Vector3 desiredLocalPos = transform.InverseTransformPoint(m_DesiredPosition);
-        float size = 0f;
-
-        for (int i = 0; i < m_Targets.Length; i++)
-        {
-            if (!m_Targets[i].gameObject.activeSelf)
-                continue;
-
-            Vector3 targetLocalPos = transform.InverseTransformPoint(m_Targets[i].position);
-            Vector3 desiredPosToTarget = targetLocalPos - desiredLocalPos;
-            size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.y));
-            size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.x) / m_Camera.aspect);
-        }
-
-        size = Mathf.Max (size, m_MinSize);
-        return size;
+        Vector3 newPosition = transform.position;
+        newPosition.x = m_Target.position.x;
+        newPosition.z = m_Target.position.z + cameraOffset;
+        return newPosition;
     }
 
 }
