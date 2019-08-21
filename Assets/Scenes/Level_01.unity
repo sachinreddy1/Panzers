@@ -132,6 +132,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1856969695668742, guid: 2c527fd6667d78f4699cea0fb1030f65, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     - target: {fileID: 4707168432783786, guid: 2c527fd6667d78f4699cea0fb1030f65, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.5
@@ -211,6 +215,10 @@ PrefabInstance:
     - target: {fileID: 1856969695668742, guid: 2c527fd6667d78f4699cea0fb1030f65, type: 3}
       propertyPath: m_Name
       value: Wall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1856969695668742, guid: 2c527fd6667d78f4699cea0fb1030f65, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 4707168432783786, guid: 2c527fd6667d78f4699cea0fb1030f65, type: 3}
       propertyPath: m_LocalPosition.x
@@ -297,6 +305,10 @@ PrefabInstance:
     - target: {fileID: 1856969695668742, guid: 2c527fd6667d78f4699cea0fb1030f65, type: 3}
       propertyPath: m_Name
       value: Wall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1856969695668742, guid: 2c527fd6667d78f4699cea0fb1030f65, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 4707168432783786, guid: 2c527fd6667d78f4699cea0fb1030f65, type: 3}
       propertyPath: m_LocalPosition.x
@@ -673,6 +685,10 @@ PrefabInstance:
     - target: {fileID: 1856969695668742, guid: 2c527fd6667d78f4699cea0fb1030f65, type: 3}
       propertyPath: m_Name
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1856969695668742, guid: 2c527fd6667d78f4699cea0fb1030f65, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 4707168432783786, guid: 2c527fd6667d78f4699cea0fb1030f65, type: 3}
       propertyPath: m_LocalPosition.x

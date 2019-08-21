@@ -15,6 +15,7 @@ public class playerController : MonoBehaviour
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;    
     // 
     public Transform tankHead;
+    private float shotAngle;
     // 
     public GameObject bulletPrefab;
     public Transform firePoint;
@@ -50,8 +51,8 @@ public class playerController : MonoBehaviour
         m_Rigidbody.velocity = Vector3.SmoothDamp(m_Rigidbody.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
         if (horizontalMove != 0 || verticalMove != 0) {
-            float angle = (Mathf.Atan2(verticalMove, -horizontalMove) * Mathf.Rad2Deg);
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, angle, 0f), turnSpeed);
+            float turnAngle = (Mathf.Atan2(verticalMove, -horizontalMove) * Mathf.Rad2Deg);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, turnAngle, 0f), turnSpeed);
         }
     }
 
@@ -65,8 +66,8 @@ public class playerController : MonoBehaviour
             Vector3 dir = hit.point - tankHead.position;
             dir.y = 0;
 
-            float angle = Mathf.Atan2(dir.z, -dir.x) * Mathf.Rad2Deg;
-            tankHead.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+            shotAngle = Mathf.Atan2(dir.z, -dir.x) * Mathf.Rad2Deg;            
+            tankHead.rotation = Quaternion.AngleAxis(shotAngle, Vector3.up);
         }
 
         m_Rigidbody.angularVelocity = Vector3.zero;
@@ -75,6 +76,7 @@ public class playerController : MonoBehaviour
     // ----------------------------------------------- //
 
     void Shoot () {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject shell = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        shell.GetComponent<Shell>().shotAngle = tankHead.transform.forward;
     }
 }

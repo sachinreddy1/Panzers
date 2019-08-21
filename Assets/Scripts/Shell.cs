@@ -6,6 +6,9 @@ public class Shell : MonoBehaviour
 {
     public float speed = 20f;
     private Rigidbody m_Rigidbody;
+    // 
+    [HideInInspector]
+    public Vector3 shotAngle;
 
     // Start is called before the first frame update
     void Start()
@@ -16,11 +19,11 @@ public class Shell : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider hitInfo) {
-        Debug.Log(hitInfo);
-        HitTarget();
-    }
+        if (hitInfo.gameObject.tag == "Environment") {
+            m_Rigidbody.velocity = shotAngle * speed;
 
-    void HitTarget() {
-        Destroy(gameObject);
+            Debug.Log(shotAngle);
+        }
+        // Destroy(gameObject);
     }
 }
