@@ -15,8 +15,6 @@ public class playerController : MonoBehaviour
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;    
     // 
     public Transform tankHead;
-    private float shotAngle;
-    // 
     public GameObject bulletPrefab;
     public Transform firePoint;
 
@@ -66,7 +64,7 @@ public class playerController : MonoBehaviour
             Vector3 dir = hit.point - tankHead.position;
             dir.y = 0;
 
-            shotAngle = Mathf.Atan2(dir.z, -dir.x) * Mathf.Rad2Deg;            
+            float shotAngle = Mathf.Atan2(dir.z, -dir.x) * Mathf.Rad2Deg;            
             tankHead.rotation = Quaternion.AngleAxis(shotAngle, Vector3.up);
         }
 
@@ -76,7 +74,6 @@ public class playerController : MonoBehaviour
     // ----------------------------------------------- //
 
     void Shoot () {
-        GameObject shell = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        shell.GetComponent<Shell>().shotAngle = tankHead.transform.forward;
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
 }
