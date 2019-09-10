@@ -76,4 +76,5 @@ public class playerController : MonoBehaviour
     void Shoot () {
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
+
 }

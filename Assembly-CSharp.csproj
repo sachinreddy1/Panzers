@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Shell.cs" />
+     <Compile Include="Assets\Scripts\TankTreads.cs" />
      <Compile Include="Assets\Scripts\playerController.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Users/sachinreddy/Documents/Project_Files/Panzers/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
