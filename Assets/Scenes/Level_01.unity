@@ -1230,6 +1230,30 @@ MonoBehaviour:
     type: 3}
   treadLeft: {fileID: 1539531635}
   treadRight: {fileID: 560191899}
+  fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.0083020115
+      outSlope: 0.0083020115
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.124134295
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -3.2438502
+      outSlope: -3.2438502
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.057354808
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1143679075555645
 GameObject:
   m_ObjectHideFlags: 0
