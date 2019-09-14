@@ -8,6 +8,8 @@ public class TankTreads : MonoBehaviour
     //
     public Transform treadLeft;
     public Transform treadRight;
+    //
+    public AnimationCurve fadeCurve;
     
     // Start is called before the first frame update
     void Start()
@@ -25,7 +27,21 @@ public class TankTreads : MonoBehaviour
         GameObject tLeft = (GameObject)Instantiate(tankTread, treadLeft.position, transform.rotation * tankTread.transform.rotation);
         GameObject tRight = (GameObject)Instantiate(tankTread, treadRight.position, transform.rotation * tankTread.transform.rotation);
 
-        Destroy(tLeft, 1f);
-        Destroy(tRight, 1f);
+        StartCoroutine(FadeOut(tLeft));
+        StartCoroutine(FadeOut(tRight));
+    }
+
+    IEnumerator FadeOut(GameObject tread)
+    {
+        SpriteRenderer obj = tread.GetComponent<SpriteRenderer>();
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime;
+            float a = fadeCurve.Evaluate(t);
+            obj.color = new Color(obj.color[0], obj.color[1], obj.color[2], a);
+            yield return 0;
+        }
+        Destroy(tread);
     }
 }
