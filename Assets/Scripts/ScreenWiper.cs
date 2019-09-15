@@ -47,12 +47,14 @@ public class ScreenWiper : MonoBehaviour
 
     IEnumerator FadeOut(string scene)
     {
-        float t = time;
-        while (t > 0f)
+        SceneWiper.GetComponent<RectTransform>().localPosition = new Vector3(-saved_width, saved_y, saved_z);
+        //
+        float t = 0f;
+        while (t < time)
         {
-            t -= Time.deltaTime;
-            float x = fadeCurve.Evaluate(t/time) * saved_width;
-            SceneWiper.GetComponent<RectTransform>().localPosition = new Vector3(x, saved_y, saved_z);
+            t += Time.deltaTime;
+            float x = fadeCurve.Evaluate(t / time) * saved_width;
+            SceneWiper.GetComponent<RectTransform>().localPosition = new Vector3(x - saved_width, saved_y, saved_z);
             yield return 0;
         }
 
