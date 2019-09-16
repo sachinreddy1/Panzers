@@ -12,11 +12,13 @@ public class playerController : MonoBehaviour
     // 
     private Rigidbody m_Rigidbody;
     private Vector3 m_Velocity = Vector3.zero;
-    [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;    
+    [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
     // 
     public Transform tankHead;
     public GameObject bulletPrefab;
     public Transform firePoint;
+    //
+    //public GameObject destroyEffect;
 
     private void Awake()
     {
@@ -27,6 +29,9 @@ public class playerController : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.gameEnded)
+            return;
+
         horizontalMove = Input.GetAxisRaw("Horizontal") * movementSpeed;
         verticalMove = Input.GetAxisRaw("Vertical") * movementSpeed;
         // 
@@ -60,11 +65,11 @@ public class playerController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hit;
-        if (Physics.Raycast (ray, out hit)) {
+        if (Physics.Raycast(ray, out hit)) {
             Vector3 dir = hit.point - tankHead.position;
             dir.y = 0;
 
-            float shotAngle = Mathf.Atan2(dir.z, -dir.x) * Mathf.Rad2Deg;            
+            float shotAngle = Mathf.Atan2(dir.z, -dir.x) * Mathf.Rad2Deg;
             tankHead.rotation = Quaternion.AngleAxis(shotAngle, Vector3.up);
         }
 
@@ -73,8 +78,19 @@ public class playerController : MonoBehaviour
 
     // ----------------------------------------------- //
 
-    void Shoot () {
+    void Shoot() {
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
+        GameManager.EndGame();
+
+        //GameObject effect = (GameObject)Instantiate(destroyEffect, transform.position, transform.rotation);
+        //Destroy(effect, 2f);
+
+        // Call GameOver screen
     }
 
 }

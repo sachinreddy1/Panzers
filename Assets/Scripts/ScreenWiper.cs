@@ -19,7 +19,7 @@ public class ScreenWiper : MonoBehaviour
     {
         saved_y = SceneWiper.GetComponent<RectTransform>().localPosition.y;
         saved_z = SceneWiper.GetComponent<RectTransform>().localPosition.z;
-        saved_width = SceneWiper.GetComponent<RectTransform>().rect.width;
+        saved_width = SceneWiper.GetComponent<RectTransform>().rect.width + 500;
         //
         float new_width = Screen.width + 500;
         float new_height = Screen.height + 50;

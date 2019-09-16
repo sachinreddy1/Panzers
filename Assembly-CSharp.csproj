@@ -62,11 +62,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\playerController.cs" />
     <Compile Include="Assets\Scripts\ScreenWiper.cs" />
     <Compile Include="Assets\Scripts\Shell.cs" />
     <Compile Include="Assets\Scripts\TankTreads.cs" />
+    <None Include="Assets\Fonts\Roboto\LICENSE.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/ssreddy2/Downloads/Panzers_Git/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

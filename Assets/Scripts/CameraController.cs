@@ -29,6 +29,9 @@ public class CameraController : MonoBehaviour
 
     private void FixedUpdate ()
     {
+        if (GameManager.gameEnded)
+            return;
+
         Move();
         Zoom();
     }

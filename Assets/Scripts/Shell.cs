@@ -20,11 +20,16 @@ public class Shell : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.tag == "Tank")
+        {
+            collision.gameObject.GetComponent<playerController>().Die();
+        }
+
         if (numBounces == maxNumBounces) {
             Destroy(gameObject, 0);
             return;
         }
-            
+
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
