@@ -297,6 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37082e0d36eff334aa5a2244d2412484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenWiper: {fileID: 4614534273551747921}
 --- !u!4 &407712738
 Transform:
   m_ObjectHideFlags: 0
@@ -311,6 +312,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &794332482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2139325679, guid: ca4f3b276a2f1904eb3d38cf70085044,
+    type: 3}
+  m_PrefabInstance: {fileID: 4614534273551747920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &881371986
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,11 +470,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneWiper
       objectReference: {fileID: 0}
-    - target: {fileID: 4614534274772651681, guid: ca4f3b276a2f1904eb3d38cf70085044,
-        type: 3}
-      propertyPath: m_TagString
-      value: SceneWiper
-      objectReference: {fileID: 0}
     - target: {fileID: 4614534274772651683, guid: ca4f3b276a2f1904eb3d38cf70085044,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -523,23 +525,65 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4614534273467976082, guid: ca4f3b276a2f1904eb3d38cf70085044,
+    - target: {fileID: 4614534274772651682, guid: ca4f3b276a2f1904eb3d38cf70085044,
         type: 3}
-      propertyPath: m_Sprite
+      propertyPath: gameOverPanel
       value: 
-      objectReference: {fileID: 21300000, guid: 0b79125573662304a98dd08e9ddafae1,
-        type: 3}
-    - target: {fileID: 4614534273467976082, guid: ca4f3b276a2f1904eb3d38cf70085044,
-        type: 3}
-      propertyPath: m_Type
+      objectReference: {fileID: 794332482}
+    - target: {fileID: 2139325680, guid: ca4f3b276a2f1904eb3d38cf70085044, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2139325680, guid: ca4f3b276a2f1904eb3d38cf70085044, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2139325680, guid: ca4f3b276a2f1904eb3d38cf70085044, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2139325680, guid: ca4f3b276a2f1904eb3d38cf70085044, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2139325679, guid: ca4f3b276a2f1904eb3d38cf70085044, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2139325681, guid: ca4f3b276a2f1904eb3d38cf70085044, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0b79125573662304a98dd08e9ddafae1,
+        type: 3}
+    - target: {fileID: 2139325681, guid: ca4f3b276a2f1904eb3d38cf70085044, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505358213, guid: ca4f3b276a2f1904eb3d38cf70085044, type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505358213, guid: ca4f3b276a2f1904eb3d38cf70085044, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 341105d881920458691ba853835494ab,
+        type: 3}
+    - target: {fileID: 1505358213, guid: ca4f3b276a2f1904eb3d38cf70085044, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505358213, guid: ca4f3b276a2f1904eb3d38cf70085044, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca4f3b276a2f1904eb3d38cf70085044, type: 3}
+--- !u!1 &4614534273551747921 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4614534274772651681, guid: ca4f3b276a2f1904eb3d38cf70085044,
+    type: 3}
+  m_PrefabInstance: {fileID: 4614534273551747920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5422980530735416695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1746025329998360334, guid: 5b7aaa618370da241a071db423626800,
@@ -556,11 +600,6 @@ PrefabInstance:
     - target: {fileID: 1743443529346237244, guid: 5b7aaa618370da241a071db423626800,
         type: 3}
       propertyPath: m_Name
-      value: Tank
-      objectReference: {fileID: 0}
-    - target: {fileID: 1743443529346237244, guid: 5b7aaa618370da241a071db423626800,
-        type: 3}
-      propertyPath: m_TagString
       value: Tank
       objectReference: {fileID: 0}
     - target: {fileID: 1746025329998360334, guid: 5b7aaa618370da241a071db423626800,
@@ -618,65 +657,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1744590375962887363, guid: 5b7aaa618370da241a071db423626800,
+    - target: {fileID: 1744551724591774647, guid: 5b7aaa618370da241a071db423626800,
         type: 3}
-      propertyPath: fadeCurve.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1744590375962887363, guid: 5b7aaa618370da241a071db423626800,
-        type: 3}
-      propertyPath: fadeCurve.m_Curve.Array.data[0].inSlope
-      value: -0.0006332508
-      objectReference: {fileID: 0}
-    - target: {fileID: 1744590375962887363, guid: 5b7aaa618370da241a071db423626800,
-        type: 3}
-      propertyPath: fadeCurve.m_Curve.Array.data[0].outSlope
-      value: -0.0006332508
-      objectReference: {fileID: 0}
-    - target: {fileID: 1744590375962887363, guid: 5b7aaa618370da241a071db423626800,
-        type: 3}
-      propertyPath: fadeCurve.m_Curve.Array.data[1].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1744590375962887363, guid: 5b7aaa618370da241a071db423626800,
-        type: 3}
-      propertyPath: fadeCurve.m_Curve.Array.data[1].value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1744590375962887363, guid: 5b7aaa618370da241a071db423626800,
-        type: 3}
-      propertyPath: fadeCurve.m_Curve.Array.data[0].tangentMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1744590375962887363, guid: 5b7aaa618370da241a071db423626800,
-        type: 3}
-      propertyPath: fadeCurve.m_Curve.Array.data[1].inSlope
-      value: -2.2294014
-      objectReference: {fileID: 0}
-    - target: {fileID: 1744590375962887363, guid: 5b7aaa618370da241a071db423626800,
-        type: 3}
-      propertyPath: fadeCurve.m_Curve.Array.data[1].outSlope
-      value: -2.2294014
-      objectReference: {fileID: 0}
-    - target: {fileID: 1744590375962887363, guid: 5b7aaa618370da241a071db423626800,
-        type: 3}
-      propertyPath: fadeCurve.m_Curve.Array.data[1].tangentMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1744590375962887363, guid: 5b7aaa618370da241a071db423626800,
-        type: 3}
-      propertyPath: fadeCurve.m_Curve.Array.data[0].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1744590375962887363, guid: 5b7aaa618370da241a071db423626800,
-        type: 3}
-      propertyPath: fadeCurve.m_Curve.Array.data[0].outWeight
-      value: 0.50149727
-      objectReference: {fileID: 0}
-    - target: {fileID: 1744590375962887363, guid: 5b7aaa618370da241a071db423626800,
-        type: 3}
-      propertyPath: fadeCurve.m_Curve.Array.data[1].inWeight
-      value: 0.076176524
-      objectReference: {fileID: 0}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 407712737}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b7aaa618370da241a071db423626800, type: 3}

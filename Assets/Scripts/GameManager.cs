@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject screenWiper;
     [HideInInspector]
     public static bool gameEnded;
-    //public GameObject gameOverUI;
 
     // Start is called before the first frame update
     void Start()
@@ -26,9 +26,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static void EndGame()
+    public void EndGame()
     {
         gameEnded = true;
         Debug.Log("GAME OVER.");
+        screenWiper.GetComponent<ScreenWiper>().GameOver();
     }
 }

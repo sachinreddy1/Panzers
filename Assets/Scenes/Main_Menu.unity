@@ -1553,11 +1553,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneWiper
       objectReference: {fileID: 0}
-    - target: {fileID: 4614534274772651681, guid: ca4f3b276a2f1904eb3d38cf70085044,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4614534274772651683, guid: ca4f3b276a2f1904eb3d38cf70085044,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1612,21 +1607,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4614534273467976081, guid: ca4f3b276a2f1904eb3d38cf70085044,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4614534273995113296, guid: ca4f3b276a2f1904eb3d38cf70085044,
-        type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4614534273995113297, guid: ca4f3b276a2f1904eb3d38cf70085044,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca4f3b276a2f1904eb3d38cf70085044, type: 3}

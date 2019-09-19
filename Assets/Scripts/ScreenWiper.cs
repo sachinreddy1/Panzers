@@ -9,6 +9,7 @@ public class ScreenWiper : MonoBehaviour
     public GameObject panel;
     public Canvas canvas;
     public AnimationCurve fadeCurve;
+    public GameObject gameOverPanel;
     //
     private float saved_y;
     private float saved_z;
@@ -22,7 +23,6 @@ public class ScreenWiper : MonoBehaviour
 
     void Awake()
     {
-        canvasWidth = canvas.GetComponent<RectTransform>().rect.width;
         canvasHeight = canvas.GetComponent<RectTransform>().rect.height;
 
         saved_y = panel.GetComponent<RectTransform>().localPosition.y;
@@ -31,13 +31,44 @@ public class ScreenWiper : MonoBehaviour
 
     void Start()
     {
+        canvasWidth = canvas.GetComponent<RectTransform>().rect.width;
         StartCoroutine(FadeIn());
     }
+
+    // ----------------------------------------------- //
 
     public void FadeTo(string scene)
     {
         StartCoroutine(FadeOut(scene));
     }
+
+    public void GameOver()
+    {
+        StartCoroutine(EndGame());
+    }
+
+    // ----------------------------------------------- //
+
+    IEnumerator EndGame()
+    {
+        while (fadeIn)
+            yield return new WaitForSeconds(0.1f);
+
+        gameOverPanel.SetActive(true);
+        panel.GetComponent<RectTransform>().localPosition = new Vector3(-canvasWidth, saved_y, saved_z);
+        gameOverPanel.GetComponent<RectTransform>().localPosition = new Vector3(-canvasWidth, saved_y, saved_z);
+        float t = 0f;
+        while (t < time)
+        {
+            t += Time.deltaTime;
+            float x = fadeCurve.Evaluate(t / time) * canvasWidth;
+            panel.GetComponent<RectTransform>().localPosition = new Vector3(x - canvasWidth, saved_y, saved_z);
+            gameOverPanel.GetComponent<RectTransform>().localPosition = new Vector3(x - canvasWidth, saved_y, saved_z);
+            yield return 0;
+        }
+    }
+
+    // ----------------------------------------------- //
 
     IEnumerator FadeIn()
     {

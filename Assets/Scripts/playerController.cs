@@ -19,6 +19,8 @@ public class playerController : MonoBehaviour
     public Transform firePoint;
     //
     //public GameObject destroyEffect;
+    //
+    public GameManager gameManager;
 
     private void Awake()
     {
@@ -85,7 +87,7 @@ public class playerController : MonoBehaviour
     public void Die()
     {
         Destroy(gameObject);
-        GameManager.EndGame();
+        gameManager.EndGame();
 
         //GameObject effect = (GameObject)Instantiate(destroyEffect, transform.position, transform.rotation);
         //Destroy(effect, 2f);

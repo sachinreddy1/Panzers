@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 1744551724591774647}
   m_Layer: 0
   m_Name: Tank
-  m_TagString: Untagged
+  m_TagString: Tank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -160,6 +160,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7957025756846592677, guid: 5f7f81ec097fd4a488d33f6ee9cad7ea,
     type: 3}
   firePoint: {fileID: 1744551724450499923}
+  gameManager: {fileID: 0}
 --- !u!1 &1744551723655496603
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,3 +381,27 @@ MonoBehaviour:
     type: 3}
   treadLeft: {fileID: 1744551724085459314}
   treadRight: {fileID: 1744551723655496602}
+  fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.0006332508
+      outSlope: -0.0006332508
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.50149727
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -2.2294014
+      outSlope: -2.2294014
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.076176524
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
