@@ -19,8 +19,10 @@ public class ScreenWiper : MonoBehaviour
     //
     public float time = 1.5f;
     //
-    private bool fadeIn;
+    private bool inTransition;
+    //
 
+    
     void Awake()
     {
         canvasHeight = canvas.GetComponent<RectTransform>().rect.height;
@@ -32,47 +34,47 @@ public class ScreenWiper : MonoBehaviour
     void Start()
     {
         canvasWidth = canvas.GetComponent<RectTransform>().rect.width;
-        StartCoroutine(FadeIn());
+        StartCoroutine(SlideIn());
     }
 
     // ----------------------------------------------- //
 
-    public void FadeTo(string scene)
+    public void SlideTo(string scene)
     {
-        StartCoroutine(FadeOut(scene));
+        StartCoroutine(SlideOut(scene));
     }
 
     public void GameOver()
     {
-        StartCoroutine(EndGame());
+        StartCoroutine(FadeOut());
     }
 
     // ----------------------------------------------- //
 
-    IEnumerator EndGame()
+    IEnumerator FadeOut()
     {
-        while (fadeIn)
+        while (inTransition)
             yield return new WaitForSeconds(0.1f);
 
-        gameOverPanel.SetActive(true);
-        panel.GetComponent<RectTransform>().localPosition = new Vector3(-canvasWidth, saved_y, saved_z);
-        gameOverPanel.GetComponent<RectTransform>().localPosition = new Vector3(-canvasWidth, saved_y, saved_z);
+        panel.GetComponent<RectTransform>().localPosition = new Vector3(0, saved_y, saved_z);
+
+        float fadeIn_time = 0.5f;
         float t = 0f;
-        while (t < time)
+        while (t < fadeIn_time)
         {
             t += Time.deltaTime;
-            float x = fadeCurve.Evaluate(t / time) * canvasWidth;
-            panel.GetComponent<RectTransform>().localPosition = new Vector3(x - canvasWidth, saved_y, saved_z);
-            gameOverPanel.GetComponent<RectTransform>().localPosition = new Vector3(x - canvasWidth, saved_y, saved_z);
+            float a = fadeCurve.Evaluate(t/fadeIn_time);
+            panel.GetComponent<Image>().color = new Color(0f, 0f, 0f, a);
             yield return 0;
         }
+        gameOverPanel.SetActive(true);
     }
 
     // ----------------------------------------------- //
 
-    IEnumerator FadeIn()
+    IEnumerator SlideIn()
     {
-        fadeIn = true;
+        inTransition = true;
         float t = 0f;
         while (t < time)
         {
@@ -81,12 +83,12 @@ public class ScreenWiper : MonoBehaviour
             panel.GetComponent<RectTransform>().localPosition = new Vector3(x, saved_y, saved_z);
             yield return 0;
         }
-        fadeIn = false;
+        inTransition = false;
     }
 
-    IEnumerator FadeOut(string scene)
+    IEnumerator SlideOut(string scene)
     {
-        while (fadeIn)
+        while (inTransition)
             yield return new WaitForSeconds(0.1f);
 
         panel.GetComponent<RectTransform>().localPosition = new Vector3(-canvasWidth, saved_y, saved_z);
@@ -100,5 +102,4 @@ public class ScreenWiper : MonoBehaviour
         }
         SceneManager.LoadScene(scene);
     }
-
 }

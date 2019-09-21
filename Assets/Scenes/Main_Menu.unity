@@ -446,7 +446,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4614534273551747921}
-        m_MethodName: FadeTo
+        m_MethodName: SlideTo
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -925,7 +925,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4614534273551747921}
-        m_MethodName: FadeTo
+        m_MethodName: SlideTo
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1082,7 +1082,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4614534273551747921}
-        m_MethodName: FadeTo
+        m_MethodName: SlideTo
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
