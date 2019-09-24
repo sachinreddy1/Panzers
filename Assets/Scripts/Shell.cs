@@ -12,20 +12,26 @@ public class Shell : MonoBehaviour
     // 
     public int maxNumBounces = 1;
     private int numBounces = 0;
-    
+    //
+    public GameObject explosionEffect;
+
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Rigidbody.velocity = transform.forward * speed;
     }
 
-    void OnCollisionEnter(Collision collision) {
+    void OnCollisionEnter(Collision collision)
+    {
         if (collision.gameObject.tag == "Tank")
         {
             collision.gameObject.GetComponent<playerController>().Die();
         }
 
-        if (numBounces == maxNumBounces) {
+        if (numBounces == maxNumBounces)
+        {
+            GameObject effect = (GameObject)Instantiate(explosionEffect, transform.position, transform.rotation);
+            Destroy(effect, 2f);
             Destroy(gameObject, 0);
             return;
         }
@@ -33,7 +39,7 @@ public class Shell : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast (ray, out hit))
+        if (Physics.Raycast(ray, out hit))
         {
             Vector3 reflectDir = Vector3.Reflect(ray.direction, hit.normal);
             float rot = 90 - Mathf.Atan2(reflectDir.z, reflectDir.x) * Mathf.Rad2Deg;
@@ -43,5 +49,7 @@ public class Shell : MonoBehaviour
             numBounces++;
         }
     }
+
+
 
 }
