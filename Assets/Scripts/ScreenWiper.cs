@@ -22,7 +22,7 @@ public class ScreenWiper : MonoBehaviour
     private bool inTransition;
     //
 
-    
+
     void Awake()
     {
         canvasHeight = canvas.GetComponent<RectTransform>().rect.height;
@@ -63,7 +63,7 @@ public class ScreenWiper : MonoBehaviour
         while (t < fadeIn_time)
         {
             t += Time.deltaTime;
-            float a = fadeCurve.Evaluate(t/fadeIn_time);
+            float a = fadeCurve.Evaluate(t / fadeIn_time);
             panel.GetComponent<Image>().color = new Color(0f, 0f, 0f, a);
             yield return 0;
         }
@@ -79,7 +79,7 @@ public class ScreenWiper : MonoBehaviour
         while (t < time)
         {
             t += Time.deltaTime;
-            float x = fadeCurve.Evaluate(t/time) * canvasWidth;
+            float x = fadeCurve.Evaluate(t / time) * canvasWidth;
             panel.GetComponent<RectTransform>().localPosition = new Vector3(x, saved_y, saved_z);
             yield return 0;
         }
