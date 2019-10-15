@@ -20,8 +20,6 @@ public class ScreenWiper : MonoBehaviour
     public float time = 1.5f;
     //
     private bool inTransition;
-    //
-
 
     void Awake()
     {
@@ -88,6 +86,19 @@ public class ScreenWiper : MonoBehaviour
 
     IEnumerator SlideOut(string scene)
     {
+        if (gameOverPanel != null)
+        {
+            float t_go = 0f;
+            while (t_go < 0.5f)
+            {
+                t_go += Time.deltaTime;
+                float x = fadeCurve.Evaluate(t_go / 0.5f);
+                gameOverPanel.GetComponent<CanvasGroup>().alpha = 1.0f - x;
+                yield return 0;
+            }
+            gameOverPanel.SetActive(false);
+        }
+
         while (inTransition)
             yield return new WaitForSeconds(0.1f);
 
