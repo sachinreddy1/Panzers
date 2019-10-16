@@ -18,7 +18,7 @@ public class playerController : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
     //
-    //public GameObject destroyEffect;
+    public GameObject destroyEffect;
     //
     public GameManager gameManager;
 
@@ -37,7 +37,8 @@ public class playerController : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal") * movementSpeed;
         verticalMove = Input.GetAxisRaw("Vertical") * movementSpeed;
         // 
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0))
+        {
             Shoot();
         }
     }
@@ -55,7 +56,8 @@ public class playerController : MonoBehaviour
         Vector3 targetVelocity = new Vector3(horizontalMove, 0f, verticalMove);
         m_Rigidbody.velocity = Vector3.SmoothDamp(m_Rigidbody.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
-        if (horizontalMove != 0 || verticalMove != 0) {
+        if (horizontalMove != 0 || verticalMove != 0)
+        {
             float turnAngle = (Mathf.Atan2(verticalMove, -horizontalMove) * Mathf.Rad2Deg);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, turnAngle, 0f), turnSpeed);
         }
@@ -67,7 +69,8 @@ public class playerController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit)) {
+        if (Physics.Raycast(ray, out hit))
+        {
             Vector3 dir = hit.point - tankHead.position;
             dir.y = 0;
 
@@ -80,19 +83,18 @@ public class playerController : MonoBehaviour
 
     // ----------------------------------------------- //
 
-    void Shoot() {
+    void Shoot()
+    {
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
 
     public void Die()
     {
         Destroy(gameObject);
+
+        GameObject effect = (GameObject)Instantiate(destroyEffect, transform.position, transform.rotation);
+        Destroy(effect, 2f);
+
         gameManager.EndGame();
-
-        //GameObject effect = (GameObject)Instantiate(destroyEffect, transform.position, transform.rotation);
-        //Destroy(effect, 2f);
-
-        // Call GameOver screen
     }
-
 }

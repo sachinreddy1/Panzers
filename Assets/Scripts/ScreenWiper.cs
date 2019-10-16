@@ -42,6 +42,11 @@ public class ScreenWiper : MonoBehaviour
         StartCoroutine(SlideOut(scene));
     }
 
+    public void SlideToAlternate(string scene)
+    {
+        StartCoroutine(SlideOutAlternate(scene));
+    }
+
     public void GameOver()
     {
         StartCoroutine(FadeOut());
@@ -66,6 +71,29 @@ public class ScreenWiper : MonoBehaviour
             yield return 0;
         }
         gameOverPanel.SetActive(true);
+    }
+
+    // ----------------------------------------------- //
+
+    IEnumerator SlideOutAlternate(string scene)
+    {
+        if (gameOverPanel != null)
+        {
+            float t_go = 0f;
+            while (t_go < 0.5f)
+            {
+                t_go += Time.deltaTime;
+                float x = fadeCurve.Evaluate(t_go / 0.5f);
+                gameOverPanel.GetComponent<CanvasGroup>().alpha = 1.0f - x;
+                yield return 0;
+            }
+            gameOverPanel.SetActive(false);
+        }
+
+        while (inTransition)
+            yield return new WaitForSeconds(0.1f);
+
+        SceneManager.LoadScene(scene);
     }
 
     // ----------------------------------------------- //

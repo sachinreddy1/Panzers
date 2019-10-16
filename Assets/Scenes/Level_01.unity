@@ -394,7 +394,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4614534274124768604}
-        m_MethodName: SlideTo
+        m_MethodName: SlideToAlternate
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -856,7 +856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9607843, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1464,7 +1464,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4614534274124768604}
-        m_MethodName: SlideTo
+        m_MethodName: SlideToAlternate
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1735,11 +1735,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1743443529346237244, guid: 5b7aaa618370da241a071db423626800,
-        type: 3}
-      propertyPath: m_Name
-      value: Tank
-      objectReference: {fileID: 0}
     - target: {fileID: 1746025329998360334, guid: 5b7aaa618370da241a071db423626800,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1795,10 +1790,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1743443529346237244, guid: 5b7aaa618370da241a071db423626800,
+        type: 3}
+      propertyPath: m_Name
+      value: Tank
+      objectReference: {fileID: 0}
     - target: {fileID: 1744551724591774647, guid: 5b7aaa618370da241a071db423626800,
         type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 407712737}
+    - target: {fileID: 1744551724591774647, guid: 5b7aaa618370da241a071db423626800,
+        type: 3}
+      propertyPath: destroyEffect
+      value: 
+      objectReference: {fileID: 1601774445498122506, guid: 2b4fa47cc1a9849e2a6a5f29ee5e8ba3,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b7aaa618370da241a071db423626800, type: 3}
