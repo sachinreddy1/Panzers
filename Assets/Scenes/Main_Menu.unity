@@ -477,6 +477,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &587376527 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7571605791514088605, guid: 8110e41a2cbfc4e2caab239977dc8109,
+    type: 3}
+  m_PrefabInstance: {fileID: 7571605790811034763}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &719624030
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,6 +939,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Level_01
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 587376527}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, Unity.ugui, Version=1.0.0.0,

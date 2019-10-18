@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AudioManager
     - CameraController
     - GameManager
     - ScreenWiper
@@ -26,8 +27,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -59,6 +62,8 @@ ScriptsOnlyBuild:
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
@@ -98,6 +103,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12676}
     - Class: 114
       Script: {instanceID: 12970}
+    - Class: 114
+      Script: {instanceID: 16216}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -147,6 +154,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
     - Class: 95
@@ -175,6 +184,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12578}
     - Class: 114
       Script: {instanceID: 12970}
+    - Class: 114
+      Script: {instanceID: 16216}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -664,6 +675,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 93046362279534243958131285f7938d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AudioManager
   platform: 20
   scenePathNames:
   - Assets/Scenes/Main_Menu.unity

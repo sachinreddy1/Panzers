@@ -34,11 +34,12 @@ public class AudioManager : MonoBehaviour
 
             s.source.outputAudioMixerGroup = mixerGroup;
         }
-
-        Play("MainMenu", 21.50f, 42f, 5f, 10f);
     }
 
-
+    void Start()
+    {
+        Play("MainMenu", 22.5f, 42f, 5f, 10f);
+    }
 
     public void Play(string sound, float startTime, float endTime, float fadeInTime, float fadeOutTime)
     {
