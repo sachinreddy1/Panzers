@@ -53,10 +53,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AudioManager.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\ScreenWiper.cs" />
      <Compile Include="Assets\Scripts\Shell.cs" />
+     <Compile Include="Assets\Scripts\Sound.cs" />
      <Compile Include="Assets\Scripts\TankTreads.cs" />
      <Compile Include="Assets\Scripts\playerController.cs" />
      <None Include="Assets\Fonts\Roboto\LICENSE.txt" />
