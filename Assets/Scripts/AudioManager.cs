@@ -7,10 +7,12 @@ public class AudioManager : MonoBehaviour
 {
 
     public static AudioManager instance;
-
+    //
     public AudioMixerGroup mixerGroup;
-
     public Sound[] sounds;
+    //
+    static bool fadedIn = false;
+    static bool played = false;
 
     void Awake()
     {
@@ -33,10 +35,12 @@ public class AudioManager : MonoBehaviour
             s.source.outputAudioMixerGroup = mixerGroup;
         }
 
-        Play("MainMenu", 20f, 40f);
+        Play("MainMenu", 21.50f, 42f, 5f, 10f);
     }
 
-    public void Play(string sound, float startTime, float endTime)
+
+
+    public void Play(string sound, float startTime, float endTime, float fadeInTime, float fadeOutTime)
     {
         Sound s = Array.Find(sounds, item => item.name == sound);
         if (s == null)
@@ -47,10 +51,12 @@ public class AudioManager : MonoBehaviour
 
         s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
         s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
-
+        //
+        fadedIn = false; played = false;
         s.source.time = startTime;
-        StartCoroutine(FadeIn(s.source, 3f));
-        s.source.SetScheduledEndTime(AudioSettings.dspTime + (endTime - startTime));
+        StartCoroutine(FadeIn(s.source, fadeInTime));
+        StartCoroutine(Wait(endTime - startTime - fadeInTime - fadeOutTime));
+        StartCoroutine(FadeOut(s.source, fadeOutTime));
     }
 
     // ----------------------------------- //
@@ -64,10 +70,23 @@ public class AudioManager : MonoBehaviour
             audioSource.volume += Time.deltaTime / FadeTime;
             yield return null;
         }
+        fadedIn = true;
+    }
+
+    public static IEnumerator Wait(float duration)
+    {
+        while (!fadedIn)
+            yield return new WaitForSeconds(0.1f);
+
+        yield return new WaitForSeconds(duration);
+        played = true;
     }
 
     public static IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
     {
+        while (!played)
+            yield return new WaitForSeconds(0.1f);
+
         float startVolume = audioSource.volume;
         while (audioSource.volume > 0)
         {
