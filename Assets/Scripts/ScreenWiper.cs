@@ -10,6 +10,7 @@ public class ScreenWiper : MonoBehaviour
     public Canvas canvas;
     public AnimationCurve fadeCurve;
     public GameObject gameOverPanel;
+    public GameObject pauseMenuPanel;
     //
     private float saved_y;
     private float saved_z;
