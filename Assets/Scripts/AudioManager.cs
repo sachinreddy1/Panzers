@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        Play("MainMenu", 22.5f, 42f, 5f, 10f);
+        Play("MainMenu", 23.25f, 42f, 5f, 10f);
     }
 
     public void Play(string sound, float startTime, float endTime, float fadeInTime, float fadeOutTime)

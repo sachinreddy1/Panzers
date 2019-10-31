@@ -27,10 +27,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -90,21 +88,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11744}
     - Class: 114
-      Script: {instanceID: 12074}
+      Script: {instanceID: 12076}
     - Class: 114
-      Script: {instanceID: 12168}
-    - Class: 114
-      Script: {instanceID: 12296}
+      Script: {instanceID: 12170}
     - Class: 114
       Script: {instanceID: 12298}
     - Class: 114
-      Script: {instanceID: 12578}
+      Script: {instanceID: 12300}
     - Class: 114
-      Script: {instanceID: 12676}
+      Script: {instanceID: 12580}
     - Class: 114
-      Script: {instanceID: 12970}
+      Script: {instanceID: 12678}
     - Class: 114
-      Script: {instanceID: 16216}
+      Script: {instanceID: 12828}
+    - Class: 114
+      Script: {instanceID: 12974}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -173,19 +171,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11688}
     - Class: 114
-      Script: {instanceID: 12074}
+      Script: {instanceID: 12076}
     - Class: 114
-      Script: {instanceID: 12168}
-    - Class: 114
-      Script: {instanceID: 12296}
+      Script: {instanceID: 12170}
     - Class: 114
       Script: {instanceID: 12298}
     - Class: 114
-      Script: {instanceID: 12578}
+      Script: {instanceID: 12300}
     - Class: 114
-      Script: {instanceID: 12970}
+      Script: {instanceID: 12580}
     - Class: 114
-      Script: {instanceID: 16216}
+      Script: {instanceID: 12828}
+    - Class: 114
+      Script: {instanceID: 12974}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -503,7 +501,7 @@ ScriptsOnlyBuild:
     className: HorizontalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 09fc3fedc985bd4ab154b7c7e61ea9de
+      Hash: f789ea7349f7ee1001de333969365a64
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ScreenWiper
@@ -585,6 +583,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: 93046362279534243958131285f7938d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AudioManager
   - hash:
       serializedVersion: 2
       Hash: 5372ed2ce39229b1ac910757999a8be2
@@ -675,12 +679,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 93046362279534243958131285f7938d
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: AudioManager
   platform: 20
   scenePathNames:
   - Assets/Scenes/Main_Menu.unity
