@@ -64,12 +64,20 @@ public class ScreenWiper : MonoBehaviour
 
     public void GameOver()
     {
+        if (pauseMenuPanel.activeSelf)
+        {
+            StartCoroutine(WaitTime(1.5f));
+        }
+
         StartCoroutine(FadeOut());
     }
 
     public void TogglePause()
     {
         if (!pauseMenuPanel)
+            return;
+
+        if (GameManager.gameEnded)
             return;
 
         if (!pauseMenuPanel.activeSelf)
@@ -123,7 +131,7 @@ public class ScreenWiper : MonoBehaviour
         }
         pauseMenuPanel.SetActive(true);
         pauseMenuPanel.GetComponent<CanvasGroup>().alpha = 1.0f;
-        Time.timeScale = 0f;
+        Time.timeScale = 0.0f;
     }
 
     IEnumerator PauseFadeIn()
@@ -137,7 +145,6 @@ public class ScreenWiper : MonoBehaviour
                 t_go += Time.deltaTime;
                 float x = fadeCurve.Evaluate(t_go / 0.3f);
                 pauseMenuPanel.GetComponent<CanvasGroup>().alpha = 1.0f - x;
-                Debug.Log("Fading in:" + (1.0f - x));
                 yield return 0;
             }
             pauseMenuPanel.SetActive(false);
@@ -255,5 +262,12 @@ public class ScreenWiper : MonoBehaviour
             yield return 0;
         }
         SceneManager.LoadScene(scene);
+    }
+
+    // ----------------------------------------------- //
+
+    IEnumerator WaitTime(float time)
+    {
+        yield return new WaitForSeconds(time);
     }
 }
